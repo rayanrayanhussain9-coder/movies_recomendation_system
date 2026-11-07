@@ -106,8 +106,7 @@ def recommend(movie):
     ]
 
     if matches.empty:
-        print("Movie not found. Please check the spelling.")
-        return
+        return None
 
     index = matches.index[0]
 
@@ -119,12 +118,9 @@ def recommend(movie):
         reverse=True
     )
 
-    print("\nRecommended Movies:\n")
+    recommended_movies = []
 
     for i in scores[1:6]:
-        print(movies.iloc[i[0]].title)
+        recommended_movies.append(movies.iloc[i[0]].title)
 
-# 16. Take user input
-name = input("Enter a movie name: ")
-
-recommend(name)
+    return recommended_movies
